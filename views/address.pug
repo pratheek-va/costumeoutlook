@@ -1,0 +1,33 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/adress.css')
+.container
+  form#gform(method='post')
+    .row
+      .col
+        h3.title Please fill your address
+        .inputBox
+          span full name :
+          input(type='text' placeholder='john deo' name='FULLNAME' id='name' required)
+        .inputBox
+          span phonno :
+          input(type='number' placeholder='00000' name='PHONENO' id='phone' required)
+        .inputBox
+          span address :
+          input(type='text' placeholder='room - street - locality' name='ADDRESS' id='address' required)
+        .inputBox
+          span city :
+          input(type='text' placeholder='mumbai' name='CITY' id='city' required)
+        .flex
+          .inputBox
+            span state :
+            input(type='text' placeholder='Karnataka' name='STATE' id='state' required)
+          .inputBox
+            span zip code :
+            input(type='text' placeholder='123 456' name='ZIPCODE' id='zipcode' required)
+      input.submit-btn(type='submit' value='BUY ITEM')
+script(src="https://checkout.razorpay.com/v1/checkout.js")
+script(src="/js/bundle.js")

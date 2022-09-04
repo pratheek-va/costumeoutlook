@@ -1,0 +1,31 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/style.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+  link(rel='stylesheet' href='js/scrprt.js')
+  script(src='/js/script.js')
+  title COSTUME OUTLOOK
+include _header
+  #mobile
+    a(href='#')
+      i.fa.fa-shopping-bag(aria-hidden='true')
+    i#bar.fas.fa-outdent
+section#productlist
+  h2= `${title.toUpperCase()}`
+  p Buy 1 and get 10% off!
+section#banner
+  h4 Costume Outlook
+  h2 &ldquo;Happiness is not in money, but in shopping.&rdquo;!
+  // <button class="normal">Explore</button>
+block content
+    h1 placeholder text
+script.
+  function clicked() {
+    //- const slug = title.toLowerCase().split(" ").join('-');
+    //- console.log(slug);
+    window.location.href = `newproduct.html`;
+  }
+include _footer

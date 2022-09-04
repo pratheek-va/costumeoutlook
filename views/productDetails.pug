@@ -1,0 +1,78 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/newproduct.css')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+  title= product.companyName + ' | ' + product.name
+include _header
+section.container.product.my-1.pt-2
+  .row.mt-5.image-container
+    .col-lg-5.col-md-12.col-12
+      img#main.img-fluid.w-100(src='https://cdn.shopify.com/s/files/1/0515/6169/3382/products/ILUMA-BRIGHTENING-POWDER-PDP-R02a_600x.jpg?v=1637780346' alt='')
+      .smallimg
+        each image in product.images
+          .smallimgcol
+           img.imgsmall(src=image alt=product.name)
+    .col-lg-6.col-md-12.col-12
+      p.product-id(style="display: none")= product._id
+      h6= title.charAt(0).toUpperCase() + title.slice(1) 
+      h3.py-2= product.name
+      h2
+        span#price ₹637
+        span#amount= ` Rs.${product.price}`
+      h6 Size
+      .main
+        section.radio-button
+          each size in product.sizes
+            label
+              input.rb(type='radio' name='rd' value=size)
+              = size  
+      h6 Qty:
+      input.qty(type='number' value='1' min='1' max='5')
+      br
+      if user 
+        button#btn
+          i.fas.fa-shopping-cart
+          |     Add to Cart
+        button#btn1
+          i.fa-solid.fa-store
+          |   Buy Now
+      else
+        button.button(onclick="window.location.href='/login'")
+          i.fas.fa-shopping-cart
+          |     Add to Cart
+        button.button1(onclick="window.location.href='/login'")
+          i.fa-solid.fa-store
+          |   Buy Now
+      h4.mt-5.mb-3 Product Details
+      span
+        | CostumeOutlook provides fanstatic product at cheap rate and we will delivering our customer bold quality product
+        | and we are looking for your satisfication.We will delever the product in 7 days delivery promise!
+.card.text-center.bg-black.mt-5
+  .card-header.text-white Costumeoutlook
+  .card-body
+    h5.card-title.text-white CostumeOutlook@gmail.com
+    p.card-text.text-white
+      | Our new clothing store with amazing discounts
+  .card-footer.text-muted
+    | CostumeOutlook 2022 - All right Reserved 
+    br
+    span#footer
+      | Powered by BroCoders
+  script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js' integrity='sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js' integrity='sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF' crossorigin='anonymous')
+  script(src="/js/bundle.js")
+  script.
+    var mainImg = document.getElementById("main");
+    var smallImg = document.querySelectorAll("imgsmall");
+    const i = 0;
+    const images = document.querySelectorAll('.imgsmall');
+
+    images.forEach(image => {
+      image.addEventListener('click', function handleClick(event) {
+          mainImg.src = image.src;
+      });
+    });

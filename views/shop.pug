@@ -1,0 +1,39 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/style.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+  link(rel='stylesheet' href='scrprt.js')
+  title COSTUME OUTLOOK
+include _header
+  #mobile
+    a(href='#')
+      i.fa.fa-shopping-bag(aria-hidden='true')
+    i#bar.fas.fa-outdent
+section#banner
+  h2 CostumeOutlook
+hr
+section#productlist
+  h2 OUR PRODUCT
+  p
+  .procontainer
+    each product in products
+        .pro(onclick=`window.location.href="/${product.category.toLowerCase()}/${product.slug}"`)
+            .des
+              img(src=product.images[0])
+              p#i_id2(style='display: none') tshirt
+              span= product.companyName
+              h5= product.name
+              .star
+                i.fa-solid.fa-star
+                i.fa-solid.fa-star
+                i.fa-solid.fa-star
+                i.fa-solid.fa-star
+                i.fa-solid.fa-star
+              h4
+                span#depicrated
+                  h6 &#x20B9;1000
+                = `₹${product.price}`
+include _footer

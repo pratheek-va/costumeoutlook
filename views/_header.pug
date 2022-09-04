@@ -1,0 +1,29 @@
+section#header
+  a(href='#')
+    img.logo(src='/img/New Project - Copy.jpg' width='100px')
+  nav
+    input#click(type='checkbox')
+    label.menu-btn(for='click')
+      i.fas.fa-bars
+    ul
+      li
+        a(href='/') Home
+      li
+        a(href='/shop') Shop
+      li
+        if user
+          a(href='/cart')
+            | Cart 
+            i.fas.fa-shopping-cart
+        else
+          a(onclick="popup()" style='cursor: pointer')
+            | Cart 
+            i.fas.fa-shopping-cart
+      li
+        if user 
+          a.logout() Logout 
+            i.fas.fa-sign-out
+        else
+          a(href='/signup') Sign Up
+            i.fa.fa-user(aria-hidden='true')
+script(src="/js/bundle.js")

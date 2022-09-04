@@ -1,0 +1,95 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+  link(rel='stylesheet' href='/css/style.css')
+  script(src='/js/script.js' type='text/javascript')
+  title Cart-Costumeoutlook
+include _header
+  #mobile
+    a(href='#')
+      i.fa.fa-shopping-bag(aria-hidden='true')
+    i#bar.fas.fa-outdent
+h1 Mycart
+// cart card
+.row
+  each product in cartProducts
+    .col-12.border.product-cart
+      .cart
+        img.cartimg(src=product.image alt='')
+      .cartinfo
+        .cartdec
+          h6.h6cart= product.companyName
+          p.product-id(style="display: none")= product.id
+          p.paracart= product.name
+          .quantity
+            button.btn.minus-btn.disabled(type='button') -
+            input#quantity(type='number' value='1')
+            button.btn.plus-btn.click(type='button') +
+          h4
+            | &#x20B9;
+            span#baseprice(style='display: none')= `${(product.amount / product.quantity)}`
+            span#price(style='color: black')= product.amount
+      hr.hrcart
+      p.size(style="display: inline-block")= product.size
+      .delete
+        i.fas.fa-trash-alt
+#amount
+  h1 Order Details
+  .detail
+    p Bag Savings
+    p Bag Totals
+    p Lets buy:-
+  .detailamount
+    p#savings(style='color: green') 123.00
+    h4
+      | &#x20B9;
+      span#amountprice(style='color: black') 700
+    button
+      a.checkout()  Proceed to Payment
+include _footer_2.pug
+script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+script.
+  const minusButtons = document.querySelectorAll('.minus-btn');
+  const plusButtons = document.querySelectorAll(".plus-btn");
+  const quantities = document.querySelectorAll('#quantity');
+  const products = document.querySelectorAll("#price");
+  const savings = document.querySelector("#savings");
+
+  const totalPrice =  () => {
+    let sum = 0;
+    let s = 0;
+    products.forEach(product => {
+      const price = Number.parseInt(product.textContent)
+      sum += price;
+      s += price * 55 / 355;
+    })
+    document.querySelector('#amountprice').textContent = sum;
+    savings.textContent = `₹${s.toFixed(2)}`;
+  }
+
+  totalPrice();  
+
+  plusButtons.forEach((plusButton, i) => {
+    plusButton.addEventListener("click", function(e) {
+      quantities[i].value = Number.parseInt(quantities[i].value) + 1;
+      products[i].textContent = Number.parseInt(products[i].textContent) + Number.parseInt(products[i].parentNode.querySelector("#baseprice").textContent);
+      totalPrice();
+    })
+  })
+
+  minusButtons.forEach((minusButton, i) => {
+    minusButton.addEventListener("click", function(e) {
+      if(Number.parseInt(quantities[i].value) > 1){
+        quantities[i].value = Number.parseInt(quantities[i].value) - 1;
+        products[i].textContent = Number.parseInt(products[i].textContent) - Number.parseInt(products[i].parentNode.querySelector("#baseprice").textContent);
+        totalPrice();
+      }
+    })
+  })
+script(src="/js/bundle.js")

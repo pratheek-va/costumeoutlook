@@ -1,0 +1,51 @@
+footer#footer.f
+  .row
+    .col
+      h3
+        | CostuemOutlook
+        .underline
+          span
+      p Our new clothing store with amazing discounts.
+    .col
+      h3
+        | Shop
+        .underline
+          span
+      p Hebri
+      p Karnataka
+      p.emai-id CostumeOutlook@gmail.com
+      h4 +91-8129197782
+    .col
+      h3
+        | Links
+        .underline
+          span
+      ul.footer_ul
+        li
+          a(href='/') Home
+        li
+          a(href='/shop') Shop
+        if user && user.role == 'admin'
+          li
+            a(href='/admin/panel') Admin
+        else
+          li
+            a(href='/admin/login') Admin  
+    .col
+      h3
+        | Social
+        .underline
+          span
+      .social-icons
+        a(href='https://www.facebook.com/')
+          i.fa-brands.fa-facebook
+        a(href='https://wa.me/7676974879?text=Hello%20costumeoutlook')
+          i.fa-brands.fa-whatsapp
+  hr
+  p.copyright
+    | CostumeOutlook 2022 - All right Reserved 
+    br
+    span
+      | Powered by 
+      span
+        a(href='https://brocoders.000webhostapp.com/') BroCoders

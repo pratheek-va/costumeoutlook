@@ -1,0 +1,21 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title LOGIN|COSTUMEOUTLOOK
+  link(rel='stylesheet' href='/css/signup1.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+section.container
+  .login-container
+    .circle.circle-one
+    .form-container
+      h1.opacity LOGIN
+      form.form--login(method='post')
+        input#email(type='email' name='name' placeholder='EMAIL')
+        input#password(type='password' name='password' placeholder='PASSWORD')
+        button.opacity SUBMIT
+      .register-forget.opacity
+        a(href='/signup') REGISTER
+    .circle.circle-two
+  .theme-btn-container
+script(src="/js/bundle.js")

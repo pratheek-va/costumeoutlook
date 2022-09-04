@@ -1,0 +1,24 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title CostumeOutlook-Signup
+  link(rel='stylesheet' href='/css/signup1.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+section.container
+  .login-container
+    .circle.circle-one
+    .form-container
+      h1.opacity SignUp
+      form.form--signup(method='post')
+        input#name(type='text' name='firstname' size='33%' required='' placeholder='name')
+        input#phone(type='number' name='phoneno' size='33%' required='' placeholder='phoneno')
+        input#email(type='email' name='email' size='33%' required='' placeholder='email')
+        input#password(type='text' name='password' size='33%' required='' placeholder='Password')
+        button.opacity() SUBMIT
+      .register-forget.opacity
+        a(href='/login') LOGIN
+        a(href='/') HOME
+    .circle.circle-two
+  .theme-btn-container
+script(src="/js/bundle.js")

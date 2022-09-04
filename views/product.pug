@@ -1,0 +1,22 @@
+extends products
+
+block content
+    section#productlist
+        .procontainer
+            each product in products
+                -const price = product.price 
+                .pro(onclick=`window.location.href="/${title.toLowerCase().slice(0, title.length - 1)}/${product.slug}"`)
+                    .des
+                        img(src=product.images[0])
+                        span= product.companyName
+                        h5= product.name
+                        .star
+                        i.fa-solid.fa-star
+                        i.fa-solid.fa-star
+                        i.fa-solid.fa-star
+                        i.fa-solid.fa-star
+                        i.fa-solid.fa-star
+                        h4
+                        span#depicrated
+                            h6 &#x20B9;1000
+                        | &#x20B9; #{price} 

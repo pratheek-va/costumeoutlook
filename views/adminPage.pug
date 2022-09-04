@@ -1,0 +1,109 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+  link(rel='stylesheet' href='/css/admin.css')
+  title Admin panel
+section#header
+  a(href='#')
+    img.logo(src='/img/New Project.jpg' width='100px')
+  nav
+    input#click(type='checkbox')
+    label.menu-btn(for='click')
+      i.fas.fa-bars
+    ul
+      li
+        a(href='/') Home
+      li
+        a(href='/admin/view-product') View Items
+      li
+        a(href='/admin/orders')
+          | Orders 
+          i.fas.fa-shopping-cart
+      li
+        a.logout()
+          | logout 
+          i.fa.fa-user(aria-hidden='true')
+.back
+  h2 List of Items
+  .list
+    a(href='/admin/add-product/lee-morgan')
+      button.btn9 Add Leemorgan
+    //- a(href='admin/delete-product')
+    //-   button.btn9
+    //-     i.fas.fa-trash-alt
+    //-     | Delete Item
+  .list
+    a(href='/admin/add-product/tom-hiddle')
+      button.btn9 Add Tomhiddle
+    //- a(href='/admin/delete-product')
+    //-   button.btn9
+    //-     i.fas.fa-trash-alt
+    //-     | Delete Item
+  //- .list
+  //-   a(href='#')
+  //-     button.btn9 Add Tshirt
+  //-   a(href='admin_delete.html')
+  //-     button.btn9
+  //-       i.fas.fa-trash-alt
+  //-       | Delete Item
+  //- .list
+  //-   a(href='#')
+  //-     button.btn9 Add TrackPant
+  //-   a(href='admin_delete.html')
+  //-     button.btn9
+  //-       i.fas.fa-trash-alt
+  //-       | Delete Pant
+  .list
+    a(href='/admin/view-product')
+      button#btn10 View Added items
+footer#footer.f
+  .row
+    .col
+      h3
+        | CostuemOutlook
+        .underline
+          span
+      p Our new clothing store with amazing discounts.
+    .col
+      h3
+        | Shop
+        .underline
+          span
+      p Hebri
+      p Karnataka
+      p.emai-id CostumeOutlook@gmail.com
+      h4 +91-8129197782
+    .col
+      h3
+        | Links
+        .underline
+          span
+      ul.footer_ul
+        li
+          a(href='/') Home
+        li
+          a(href='/shop') Shop
+        li
+          a() Admin 
+    .col
+      h3
+        | Social
+        .underline
+          span
+      .social-icons
+        a(href='https://www.facebook.com/')
+          i.fa-brands.fa-facebook
+        a(href='https://wa.me/7676974879?text=Hello%20costumeoutlook')
+          i.fa-brands.fa-whatsapp
+  hr
+  p.copyright
+    | CostumeOutlook 2022 - All right Reserved 
+    br
+    span
+      | Powered by
+      span
+        a(href='https://brocoders.000webhostapp.com/') BroCoders
+script(src="/js/bundle.js")

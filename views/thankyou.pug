@@ -1,0 +1,40 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' referrerpolicy='no-referrer')
+  link(rel='stylesheet' href='/css/confrim.css')
+  title COnfirm
+section#header
+  a(href='#')
+    img.logo(src='/img/New Project.jpg' width='100px')
+  nav
+    input#click(type='checkbox')
+    label.menu-btn(for='click')
+      i.fas.fa-bars
+    ul
+      li
+        a(href='/') Home
+      li
+        a(href='/shop') Shop
+      li
+        a(href='#footer') AboutUs
+  #mobile
+    a(href='#')
+      i.fa.fa-shopping-bag(aria-hidden='true')
+    i#bar.fas.fa-outdent
+img#confirm(src='/img/sucess.gif' width='125' height='120' style='display: block')
+br
+h2#confirmh2(style='\
+font-size: 30px;\
+font-weight: 800;\
+line-height: 36px;\
+color: #333333;\
+margin: 0;\
+')
+  | Thank You For Your Order!
+h3.est ESTIMATED DELEVERY
+h4.est(style='color: rgb(15, 123, 11); font-size: 30px')
+  | -7 DAYS-
+include _footer
