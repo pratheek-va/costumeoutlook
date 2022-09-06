@@ -17,8 +17,6 @@ exports.pay = catchAsync(async (req, res) => {
 
   const order = req.body.order;
 
-  console.log(order);
-
   const razorpay = new Razorpay({
     key_id: key.id,
     key_secret: key.secret,
@@ -28,8 +26,6 @@ exports.pay = catchAsync(async (req, res) => {
     .checkoutItems;
 
   const currency = "INR";
-
-  console.log(products);
 
   products.forEach((product) => {
     sum += product.amount;
@@ -49,7 +45,6 @@ exports.pay = catchAsync(async (req, res) => {
 
   try {
     const response = await razorpay.orders.create(options);
-    console.log(response);
     res.json({
       keyId: key.id,
       id: response.id,
