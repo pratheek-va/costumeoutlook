@@ -15,7 +15,7 @@ export const displayRazorPay = async (order) => {
     description: "Test Transaction",
     image: "/img/New Project - Copy.jpg",
     order_id: data.id,
-    callback_url: "http://127.0.0.1:8000/thankyou",
+    callback_url: "https://costumeoutlook.herokuapp.com/thankyou",
 
     prefill: {
       name: order.name,
