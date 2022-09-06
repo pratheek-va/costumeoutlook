@@ -11338,7 +11338,7 @@ var displayRazorPay = /*#__PURE__*/function () {
               description: "Test Transaction",
               image: "/img/New Project - Copy.jpg",
               order_id: data.id,
-              callback_url: "http://127.0.0.1:8000/thankyou",
+              callback_url: "https://costumeoutlook.herokuapp.com/thankyou",
               prefill: {
                 name: order.name,
                 email: data.email,
@@ -11374,7 +11374,7 @@ exports.displayRazorPay = displayRazorPay;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.purchaseItem = exports.goToAddress = exports.deleteFromCart = exports.addToCart = void 0;
+exports.goToAddress = exports.deleteFromCart = exports.addToCart = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -11530,53 +11530,6 @@ var goToAddress = /*#__PURE__*/function () {
 }();
 
 exports.goToAddress = goToAddress;
-
-var purchaseItem = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(products) {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.prev = 0;
-            _context4.next = 3;
-            return (0, _axios.default)({
-              method: "POST",
-              url: "/purchase",
-              data: {
-                productIds: productIds
-              }
-            });
-
-          case 3:
-            res = _context4.sent;
-
-            if (res.data.status === "success") {
-              (0, _alerts.showAlert)("success", "Added to cart successfully");
-            }
-
-            _context4.next = 10;
-            break;
-
-          case 7:
-            _context4.prev = 7;
-            _context4.t0 = _context4["catch"](0);
-            (0, _alerts.showAlert)("error", _context4.t0.response.data.message);
-
-          case 10:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4, null, [[0, 7]]);
-  }));
-
-  return function purchaseItem(_x4) {
-    return _ref4.apply(this, arguments);
-  };
-}();
-
-exports.purchaseItem = purchaseItem;
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"product.js":[function(require,module,exports) {
 "use strict";
 
@@ -12066,7 +12019,7 @@ if (checkoutButton) checkoutButton.addEventListener("click", function (e) {
       companyName: item.querySelector(".paracart").textContent,
       quantity: Number.parseInt(item.querySelector("#quantity").value),
       amount: Number.parseInt(item.querySelector("#price").textContent),
-      size: "XL"
+      size: document.querySelector(".size")
     };
     products.push(product);
   });
@@ -12155,7 +12108,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62267" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52133" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
