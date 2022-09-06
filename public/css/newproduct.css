@@ -6,7 +6,7 @@
 .imgsmall {
   flex-basis: 25%;
   cursor: pointer;
-  width: 100px;
+  width: 93.5px;
   height: 100px;
 }
 
@@ -28,7 +28,8 @@
   margin-right: 10px;
 }
 
-#btn {
+#btn,
+.button {
   background-color: rgb(0, 0, 0);
   color: white;
   opacity: 1;
@@ -43,7 +44,8 @@
   border-radius: 5px;
 }
 
-#btn1 {
+#btn1,
+.button1 {
   background-color: rgb(255, 136, 0);
   color: white;
   opacity: 1;
@@ -287,14 +289,14 @@ footer {
   line-height: 20px;
 }
 
-.row {
+/* .row {
   width: 85%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-}
+} */
 
 @media (max-width: 500px) {
   .imgsmall {

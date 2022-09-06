@@ -1,4 +1,4 @@
 module.exports = {
-  id: "rzp_test_pGIU1KNa1Qp8Q6",
-  secret: "UL9kUOZXl5PcGNoLRHnzU8AA",
+  id: "rzp_live_M4eqrSIzUG4uMQ",
+  secret: "RkmvGz8sp2vrTnDFJBUWOlm1",
 };

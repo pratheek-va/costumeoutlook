@@ -72,7 +72,7 @@ section#productlist
         if i < 5
           .pro(onclick=`window.location.href="/${product.category.toLowerCase()}/${product.slug}"`)
             .des
-              img(src=`/img/${products[i].images[0]}`)
+              img(src=products[i].images[0])
               p#i_id2(style='display: none') tshirt
               span= product.companyName
               h5= product.name
@@ -120,7 +120,7 @@ section#productlist
         -for(let i = 5; i < 10; i++){
           .pro(onclick=`window.location.href="/${products[i].category.toLowerCase() + "s"}/${products[i].slug}"`)
             .des
-              img(src=`/img/${products[i].images[0]}`)
+              img(src=products[i].images[0])
               p#i_id2(style='display: none') tshirt
               span= products[i].companyName
               h5= products[i].name
