@@ -34,8 +34,6 @@ exports.pay = catchAsync(async (req, res) => {
     orders.push(order);
   });
 
-  console.log(orders);
-
   const options = {
     amount: sum * 100,
     currency,

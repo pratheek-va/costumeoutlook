@@ -1,6 +1,6 @@
 module.exports = {
-  id: "rzp_test_ZDIKJHgEVy7vBx",
-  secret: "T7G2vdICWmchGropOqWvaoB7",
+  id: "rzp_test_Zz63BQgrgdXEdd",
+  secret: "5CSjrOA5DZ7T7Vzcuj65bP2q",
 };
 
 // {
