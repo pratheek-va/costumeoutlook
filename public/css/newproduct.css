@@ -466,3 +466,9 @@ input:checked {
 input:not(:checked):hover {
   background: white;
 }
+
+@media screen and (max-width: 360px) {
+  .row {
+    width: 360px;
+  }
+}
