@@ -11981,7 +11981,7 @@ if (addToCartButton) addToCartButton.addEventListener("click", function (e) {
     amount: Number.parseInt(document.querySelector("#amount").textContent.slice(4)),
     size: size,
     quantity: Number.parseInt(document.querySelector(".qty").value),
-    image: document.querySelector(".imgsmall").getAttribute("src")
+    image: document.querySelector(".d-block").getAttribute("src")
   };
   (0, _cart.addToCart)(product);
 });

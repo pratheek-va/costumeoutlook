@@ -78,7 +78,7 @@ if (addToCartButton)
       ),
       size: size,
       quantity: Number.parseInt(document.querySelector(".qty").value),
-      image: document.querySelector(".imgsmall").getAttribute("src"),
+      image: document.querySelector(".d-block").getAttribute("src"),
     };
     addToCart(product);
   });
