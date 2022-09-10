@@ -13,13 +13,13 @@ section.container.product.my-1.pt-2
     .col-lg-5.col-md-12.col-12
       #carouselExampleControls.carousel.slide(data-mdb-ride='carousel')
         .carousel-inner
-          each image,i in product.images
+          each image, i in product.images
             if i == 0
               .carousel-item.active
-                img(src=image)
+                img.d-block.w-100(src=image)
             else 
               .carousel-item
-                img(src=image)
+                img.d-block.w-100(src=image)
         p.info-bar(style='text-align: center') Helllo
         button.carousel-control-prev(type='button' data-mdb-target='#carouselExampleControls' data-mdb-slide='prev' style="height: 3rem; width: 2rem; background-color:black; transform: translateY(200%)")
           span.carousel-control-prev-icon(aria-hidden='true')
