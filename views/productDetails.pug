@@ -11,17 +11,28 @@ include _header
 section.container.product.my-1.pt-2
   .row.mt-5.image-container
     .col-lg-5.col-md-12.col-12
-      img#main.img-fluid.w-100(src=product.images[0] alt='')
-      .smallimg
-        each image in product.images
-          .smallimgcol
-           img.imgsmall(src=image alt=product.name)
+      #carouselExampleControls.carousel.slide(data-mdb-ride='carousel')
+        .carousel-inner
+          each image,i in product.images
+            if i == 0
+              .carousel-item.active
+                img(src=image)
+            else 
+              .carousel-item
+                img(src=image)
+        p.info-bar(style='text-align: center') Helllo
+        button.carousel-control-prev(type='button' data-mdb-target='#carouselExampleControls' data-mdb-slide='prev' style="height: 3rem; width: 2rem; background-color:black; transform: translateY(200%)")
+          span.carousel-control-prev-icon(aria-hidden='true')
+          span.visually-hidden Previous
+        button.carousel-control-next(type='button' data-mdb-target='#carouselExampleControls' data-mdb-slide='next' style="height: 3rem; width: 2rem; background-color:black; transform: translateY(200%)")
+          span.carousel-control-next-icon(aria-hidden='true')
+          span.visually-hidden Next
     .col-lg-6.col-md-12.col-12
       p.product-id(style="display: none")= product._id
       h6= title.charAt(0).toUpperCase() + title.slice(1) 
       h3.py-2= product.name
       h2
-        span#price ₹637
+        span#price= `₹${product.deprecatedPrice}`
         span#amount= ` Rs.${product.price}`
       h6 Size
       .main
@@ -47,6 +58,7 @@ section.container.product.my-1.pt-2
         button.button1(onclick="window.location.href='/login'")
           i.fa-solid.fa-store
           |   Buy Now
+      h4.mt-5.mb-3 ₹40 Delivery Charge
       h4.mt-5.mb-3 Product Details
       span
         | CostumeOutlook provides fanstatic product at cheap rate and we will delivering our customer bold quality product
@@ -66,13 +78,40 @@ section.container.product.my-1.pt-2
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js' integrity='sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF' crossorigin='anonymous')
   script(src="/js/bundle.js")
   script.
-    var mainImg = document.getElementById("main");
-    var smallImg = document.querySelectorAll("imgsmall");
-    const i = 0;
-    const images = document.querySelectorAll('.imgsmall');
+    const nextButton = document.querySelector('.carousel-control-next');
+    const previousButton = document.querySelector('.carousel-control-prev');
+    const infoBar = document.querySelector('.info-bar');
 
-    images.forEach(image => {
-      image.addEventListener('click', function handleClick(event) {
-          mainImg.src = image.src;
-      });
-    });
+    const images = document.querySelectorAll('.carousel-item');
+
+    const len = images.length;
+
+    infoBar.textContent = `< ${1} / ${len} >`;
+
+    nextButton.addEventListener('click', function(e){
+        for(let i = 0; i < len; i++){
+          if(images[i].classList.contains('active')){
+            if(i !== len - 1){
+              images[i].classList.toggle('active');
+              images[i + 1].classList.toggle('active');
+              infoBar.textContent = `< ${i + 2} / ${len} >`;
+              break;
+          } 
+          }
+        }
+    })
+
+    previousButton.addEventListener('click', function(e) {
+      for(let i = 0; i < len; i++){
+          if(images[i].classList.contains('active')){
+            if(i !== 0){
+              images[i].classList.toggle('active');
+              images[i - 1].classList.toggle('active');
+              infoBar.textContent = `< ${i} / ${len} >`;
+              break;
+          } 
+          
+          }
+
+        }
+    })

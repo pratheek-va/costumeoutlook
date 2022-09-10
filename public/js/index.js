@@ -169,14 +169,21 @@ if (addProductButton)
     for (let i = 0; i < checkboxes.length; i++) {
       sizes.push(checkboxes[i].value);
     }
+    const companyName =
+      document.querySelector("#category").textContent === "NEW"
+        ? document.querySelector("#company-name").value
+        : document.querySelector("#company-name").textContent;
     const product = {
       name: document.querySelector("#name").value,
-      companyName: document.querySelector("#company-name").value,
-      sizes: sizes,
+      companyName,
+      sizes,
       images: images,
       price: Number.parseInt(document.querySelector("#price").value),
-      category: "TSHIRT",
+      deprecatedPrice: Number.parseInt(document.querySelector("#dprice").value),
+      category: document.querySelector("#category").textContent,
     };
+
+    console.log(product);
     setTimeout(() => {
       addProduct(product);
     }, 2000);

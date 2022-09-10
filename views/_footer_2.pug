@@ -22,11 +22,15 @@ footer#footer.f
           span
       ul.footer_ul
         li
-          a(href='index.html') Home
+          a(href='/') Home
         li
-          a(href='shop.html') Shop
-        li
-          a(href='loginSignup.html') Admin 
+          a(href='/shop') Shop
+        if user
+          li
+            a(href='/admin/login') Admin
+        else  
+          li
+            a(href='/admin/panel') Admin 
     .col
       h3
         | Social

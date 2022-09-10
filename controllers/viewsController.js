@@ -25,7 +25,7 @@ exports.getProducts = (categoryName, code) => {
 };
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  const products = await Product.find();
+  const products = await Product.find({ category: "NEW" });
   const len = products.length;
   res.status(200).render("base", {
     products,

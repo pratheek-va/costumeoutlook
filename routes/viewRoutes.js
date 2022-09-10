@@ -11,6 +11,7 @@ router.get("/tshirt/:slug", viewsController.getProduct("TSHIRT"));
 router.get("/shirt/:slug", viewsController.getProduct("SHIRT"));
 router.get("/pant/:slug", viewsController.getProduct("PANT"));
 router.get("/cap/:slug", viewsController.getProduct("CAP"));
+router.get("/new/:slug", viewsController.getProduct("NEW"));
 
 router.get("/admin/login", viewsController.adminLogin);
 router.get(
@@ -24,6 +25,10 @@ router.get("/admin/orders", viewsController.getOrders);
 router.get("/admin/view-product", viewsController.getViewProducts);
 
 router.get("/tshirts/:brand", viewsController.getProducts("Tshirts", "TSHIRT"));
+router.get(
+  "/tshirts/:brand",
+  viewsController.getProducts("New product", "NEw")
+);
 
 router.get(
   "/address/:token",

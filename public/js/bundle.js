@@ -11195,7 +11195,7 @@ var logout = /*#__PURE__*/function () {
             _context2.next = 3;
             return (0, _axios.default)({
               method: "GET",
-              url: "http://127.0.0.1:8000/api/v1/users/logout"
+              url: "/api/v1/users/logout"
             });
 
           case 3:
@@ -12061,14 +12061,17 @@ if (addProductButton) addProductButton.addEventListener("submit", function (e) {
     sizes.push(checkboxes[_i].value);
   }
 
+  var companyName = document.querySelector("#category").textContent === "NEW" ? document.querySelector("#company-name").value : document.querySelector("#company-name").textContent;
   var product = {
     name: document.querySelector("#name").value,
-    companyName: document.querySelector("#company-name").value,
+    companyName: companyName,
     sizes: sizes,
     images: images,
     price: Number.parseInt(document.querySelector("#price").value),
-    category: "TSHIRT"
+    deprecatedPrice: Number.parseInt(document.querySelector("#dprice").value),
+    category: document.querySelector("#category").textContent
   };
+  console.log(product);
   setTimeout(function () {
     (0, _product.addProduct)(product);
   }, 2000);
@@ -12108,7 +12111,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55455" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58490" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

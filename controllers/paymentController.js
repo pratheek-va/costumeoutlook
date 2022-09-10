@@ -14,7 +14,7 @@ exports.pay = catchAsync(async (req, res) => {
   const payment_capture = 1;
   let sum = 0;
   userId = res.locals.user._id;
-
+  const deliveryCharge = 40;
   const order = req.body.order;
 
   const razorpay = new Razorpay({
@@ -35,7 +35,7 @@ exports.pay = catchAsync(async (req, res) => {
   });
 
   const options = {
-    amount: sum * 100,
+    amount: (sum + deliveryCharge) * 100,
     currency,
     receipt: shortid.generate(),
     payment_capture,

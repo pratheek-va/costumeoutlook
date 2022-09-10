@@ -35,21 +35,35 @@ section
           .card-body
             h4.card-title Add here-
             form.my-login-validation.add-product(novalidate='')
-              .form-group
-                -const companyName = brand.split('-').join(' ').split(' ')
-                -let name = ''
-                -for(let i = 0; i < companyName.length; i++){
-                - name += companyName[i][0].toUpperCase() + companyName[i].slice(1);
-                -name += ' '
-                -}
-                label(for='comapny') Comapany Name
-                input#company-name.form-control(type='text' name='comapny' value=name required='' autofocus='')
+              if brand == 'new-product'
+                .form-group
+                  label(for='comapny') Category
+                  div#category.form-control= "NEW"
+                .form-group
+                  label(for='comapny') Comapany Name
+                  input#company-name.form-control(type='text' name='comapny' value='' required='' autofocus='')
+              else
+                .form-group
+                  label(for='comapny') Category
+                  div#category.form-control= "TSHIRT"
+                .form-group
+                  -const companyName = brand.split('-').join(' ').split(' ')
+                  -let name = ''
+                  -for(let i = 0; i < companyName.length; i++){
+                  - name += companyName[i][0].toUpperCase() + companyName[i].slice(1)
+                  -name += ' '
+                  -}
+                  label(for='comapny') Comapany Name
+                  div#company-name.form-control= name 
               .form-group
                 label(for='comapny')  Name
                 input#name.form-control(type='text' name='comapny' value='' required='' autofocus='')
               .form-group
-                label(for='comapny') Item prize
+                label(for='comapny') Item price
                 input#price.form-control(type='number' name='comapny' value='' required='' autofocus='')
+              .form-group
+                label(for='comapny') Original Deprecated price
+                input#dprice.form-control(type='number' name='comapny' value='' required='' autofocus='')
               .form-group
                 label(for='comapny') Item Size
                 label(for='') small

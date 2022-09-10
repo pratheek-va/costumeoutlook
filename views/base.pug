@@ -65,7 +65,7 @@ section#productlist
               i.fa-solid.fa-star
             h4
               span#depicrated
-                h6 &#x20B9;1000
+                h6= `₹${product.deprecatedPrice}`
               = `₹${product.price}` 
     else
       each product, i in products
@@ -84,7 +84,7 @@ section#productlist
                 i.fa-solid.fa-star
               h4
                 span#depicrated
-                  h6 &#x20B9;1000
+                  h6= `₹${product.deprecatedPrice}`
                 = `₹${product.price}`
 section#banner
   h4 Costume Outlook
@@ -112,7 +112,7 @@ section#productlist
                 i.fa-solid.fa-star
               h4
                 span#depicrated
-                  h6 &#x20B9;1000
+                  h6= `₹${product.deprecatedPrice}`
                 = `₹${products[i].price}`
         -}
     else
@@ -132,7 +132,7 @@ section#productlist
                 i.fa-solid.fa-star
               h4
                 span#depicrated
-                  h6 &#x20B9;1000
+                  h6= `₹${product.deprecatedPrice}`
                 = `| &#x20B9;${products[i].price}`
         -} 
 include _footer

@@ -15,6 +15,7 @@ const productSchema = new mongoose.Schema(
         6,
         "A product name must have more or equal then 10 characters",
       ],
+      unique: true,
     },
     companyName: {
       type: String,
@@ -31,6 +32,10 @@ const productSchema = new mongoose.Schema(
     },
     slug: String,
     price: {
+      type: Number,
+      required: [true, "A product must have a name"],
+    },
+    deprecatedPrice: {
       type: Number,
       required: [true, "A product must have a name"],
     },
