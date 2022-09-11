@@ -1,5 +1,9 @@
 import axios from "axios";
-import { showAlert } from "./alerts";
+import toastr from "toastr";
+
+toastr.options.closeMethod = "fadeOut";
+toastr.options.closeDuration = 2000;
+toastr.options.closeEasing = "swing";
 
 export const login = async (email, password) => {
   try {
@@ -13,13 +17,13 @@ export const login = async (email, password) => {
     });
 
     if (res.data.status === "success") {
-      showAlert("success", "Logged in successfully!");
+      toastr.success("Logged In sucessfully", "success");
       window.setTimeout(() => {
         location.assign("/");
       }, 1500);
     }
   } catch (err) {
-    showAlert("error", err.response.data.message);
+    toastr.error(err.response.data.message, "Error");
   }
 };
 
@@ -32,6 +36,6 @@ export const logout = async () => {
     if (res.data.status == "success") location.href = "/";
   } catch (err) {
     console.log(err.response);
-    showAlert("error", "Error logging out! Try again.");
+    toastr.error("Error logging out! Try again.", "error");
   }
 };

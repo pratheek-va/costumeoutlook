@@ -32,6 +32,7 @@
     "razorpay": "^2.8.3",
     "shortid": "^2.2.16",
     "slugify": "^1.6.5",
+    "toastr": "^2.1.4",
     "validator": "^13.7.0",
     "xss-clean": "^0.1.1"
   },

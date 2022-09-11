@@ -2,10 +2,14 @@ import "@babel/polyfill";
 import { login, logout } from "./login";
 import { signup } from "./signup";
 import { displayRazorPay } from "./payment";
-import { addToCart, goToAddress, purchaseItem } from "./cart";
+import { addToCart, goToAddress } from "./cart";
 import { addProduct, deleteProduct } from "./product";
 import { deleteFromCart } from "./cart";
 import { showAlert } from "./alerts";
+import toastr from "toastr";
+
+toastr.options.closeDuration = 2000;
+toastr.options.closeEasing = "swing";
 
 const loginForm = document.querySelector(".form--login");
 const signupForm = document.querySelector(".form--signup");
@@ -65,7 +69,7 @@ if (addToCartButton)
     });
 
     if (size == "") {
-      showAlert("failed", "Please provide your size");
+      toastr.warning("Please provide your size", "Warning");
       return;
     }
 
@@ -93,7 +97,7 @@ if (buyNowButton)
     });
 
     if (size == "") {
-      showAlert("failed", "Please provide your size");
+      toastr.warning("Atleast 6 characters should be there", "Failed");
       return;
     }
 
@@ -146,8 +150,9 @@ if (addProductButton)
     const sizes = [];
     const images = [];
     const checkboxes = document.querySelectorAll("#check:checked");
-
     const imageFiles = document.querySelector("#image").files;
+
+    document.querySelector(".upload").textContent = "Loading..";
 
     for (const i in imageFiles) {
       if (i != "length") {
@@ -169,6 +174,14 @@ if (addProductButton)
     for (let i = 0; i < checkboxes.length; i++) {
       sizes.push(checkboxes[i].value);
     }
+
+    const name = document.querySelector("#name").value;
+    if (name.length < 6) {
+      document.querySelector(".upload").textContent = "Upload";
+      toastr.error("Atleast 6 characters should be in name", "failed");
+      return;
+    }
+
     const companyName =
       document.querySelector("#category").textContent === "NEW"
         ? document.querySelector("#company-name").value
@@ -185,6 +198,11 @@ if (addProductButton)
 
     console.log(product);
     setTimeout(() => {
+      if (images.length == 0) {
+        document.querySelector(".upload").textContent = "Upload";
+        toastr.error("Add Atleast one image", "failed");
+        return;
+      }
       addProduct(product);
     }, 2000);
   });

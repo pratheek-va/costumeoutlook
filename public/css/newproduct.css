@@ -1,3 +1,5 @@
+@import "toastr";
+
 .smallimg {
   display: flex;
   justify-content: space-between;

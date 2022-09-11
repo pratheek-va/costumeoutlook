@@ -1,5 +1,9 @@
 import axios from "axios";
-import { showAlert } from "./alerts";
+import toastr from "toastr";
+
+toastr.options.closeMethod = "fadeOut";
+toastr.options.closeDuration = 2000;
+toastr.options.closeEasing = "swing";
 
 export const addToCart = async (product) => {
   try {
@@ -12,10 +16,10 @@ export const addToCart = async (product) => {
     });
 
     if (res.data.status === "success") {
-      showAlert("success", "Added to cart successfully");
+      toastr.success("Added to cart successfully", "success");
     }
   } catch (err) {
-    showAlert("error", err.response.data.message);
+    toastr.error(err.response.data.message, "Error");
   }
 };
 
@@ -33,7 +37,7 @@ export const deleteFromCart = async (id) => {
       window.location.href = "/cart";
     }
   } catch (err) {
-    showAlert("error", err.response.data.message);
+    toastr.error(err.response.data.message, "error");
   }
 };
 
@@ -51,6 +55,6 @@ export const goToAddress = async (products) => {
       window.location.href = `/address/${res.data.token}`;
     }
   } catch (err) {
-    showAlert("error", err.response.data.message);
+    toastr.error(err.response.data.message, "error");
   }
 };
