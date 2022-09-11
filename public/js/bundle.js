@@ -22601,30 +22601,7 @@ var logout = /*#__PURE__*/function () {
 }();
 
 exports.logout = logout;
-},{"axios":"../../node_modules/axios/index.js","toastr":"../../node_modules/toastr/toastr.js"}],"alerts.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.showAlert = exports.hideAlert = void 0;
-
-var hideAlert = function hideAlert() {
-  var el = document.querySelector(".alert");
-  if (el) el.parentElement.removeChild(el);
-};
-
-exports.hideAlert = hideAlert;
-
-var showAlert = function showAlert(type, msg) {
-  hideAlert();
-  var markup = "<div class=\"alert alert--".concat(type, "\">").concat(msg, "</div>");
-  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
-  window.setTimeout(hideAlert, 5000);
-};
-
-exports.showAlert = showAlert;
-},{}],"signup.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","toastr":"../../node_modules/toastr/toastr.js"}],"signup.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22634,7 +22611,7 @@ exports.signup = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
-var _alerts = require("./alerts");
+var _toastr = _interopRequireDefault(require("toastr"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22645,6 +22622,9 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+_toastr.default.options.closeDuration = 2000;
+_toastr.default.options.closeEasing = "swing";
 
 var signup = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(name, phoneNumber, email, password) {
@@ -22667,7 +22647,8 @@ var signup = /*#__PURE__*/function () {
             res = _context.sent;
 
             if (res.data.status === "success") {
-              (0, _alerts.showAlert)("success", "Signed in successfully!");
+              _toastr.default.success("Signed in successfully!", "success");
+
               window.setTimeout(function () {
                 location.assign("/");
               }, 1500);
@@ -22679,7 +22660,8 @@ var signup = /*#__PURE__*/function () {
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](1);
-            (0, _alerts.showAlert)("error", _context.t0.response.data.message);
+
+            _toastr.default.error(_context.t0.response.data.message, "error");
 
           case 11:
           case "end":
@@ -22695,7 +22677,7 @@ var signup = /*#__PURE__*/function () {
 }();
 
 exports.signup = signup;
-},{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"payment.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","toastr":"../../node_modules/toastr/toastr.js"}],"payment.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23060,7 +23042,30 @@ var deleteProduct = /*#__PURE__*/function () {
 }();
 
 exports.deleteProduct = deleteProduct;
-},{"axios":"../../node_modules/axios/index.js","toastr":"../../node_modules/toastr/toastr.js"}],"index.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","toastr":"../../node_modules/toastr/toastr.js"}],"alerts.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.showAlert = exports.hideAlert = void 0;
+
+var hideAlert = function hideAlert() {
+  var el = document.querySelector(".alert");
+  if (el) el.parentElement.removeChild(el);
+};
+
+exports.hideAlert = hideAlert;
+
+var showAlert = function showAlert(type, msg) {
+  hideAlert();
+  var markup = "<div class=\"alert alert--".concat(type, "\">").concat(msg, "</div>");
+  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
+  window.setTimeout(hideAlert, 5000);
+};
+
+exports.showAlert = showAlert;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("core-js/modules/es6.array.copy-within.js");

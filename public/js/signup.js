@@ -1,5 +1,8 @@
 import axios from "axios";
-import { showAlert } from "./alerts";
+import toastr from "toastr";
+
+toastr.options.closeDuration = 2000;
+toastr.options.closeEasing = "swing";
 
 export const signup = async (name, phoneNumber, email, password) => {
   console.log(name, phoneNumber, email, password);
@@ -12,12 +15,12 @@ export const signup = async (name, phoneNumber, email, password) => {
     });
 
     if (res.data.status === "success") {
-      showAlert("success", "Signed in successfully!");
+      toastr.success("Signed in successfully!", "success");
       window.setTimeout(() => {
         location.assign("/");
       }, 1500);
     }
   } catch (err) {
-    showAlert("error", err.response.data.message);
+    toastr.error(err.response.data.message, "error");
   }
 };
