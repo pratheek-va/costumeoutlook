@@ -93,8 +93,7 @@ section#banner
     a(href='/shop') Explore
 section#productlist
   h2 NEW PRODUCT
-  if user
-    p Our new products are available
+  p Our new products are available
   .procontainer
     if len > 5 && len <= 10
       -for(let i = 5; i < len; i++){
