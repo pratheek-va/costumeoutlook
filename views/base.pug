@@ -20,7 +20,7 @@ hr
   h2 Costumeoutlook
   if user 
     p#ppop
-      = `Hello ${user.name}! Buy amazing clothes and get upto 10% off`
+      = `Hello ${user.name} buy amazing clothes from your favourite costumeoutlook.in store`
     p#phone Phone-7676974879
   else 
     p#ppop
@@ -93,8 +93,8 @@ section#banner
     a(href='/shop') Explore
 section#productlist
   h2 NEW PRODUCT
-  p
-    | Buy one get 10% off!
+  if user
+    p= `Hello ${user.name} buy amazing clothes from your favourite costumeoutlook.in store`
   .procontainer
     if len > 5 && len <= 10
       -for(let i = 5; i < len; i++){

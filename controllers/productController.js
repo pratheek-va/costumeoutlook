@@ -37,7 +37,6 @@ exports.getProduct = catchAsync(async (req, res, next) => {
 
 exports.createProduct = catchAsync(async (req, res, next) => {
   const newProduct = await Product.create(req.body.product);
-  console.log(req.body.product);
 
   res.status(201).json({
     status: "success",
