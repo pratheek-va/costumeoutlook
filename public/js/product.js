@@ -17,6 +17,7 @@ export const addProduct = async (product) => {
 
     if (res.data.status === "success") {
       document.querySelector(".upload").textContent = "Upload";
+      document.querySelector(".upload").disabled = false;
       toastr.success("Added to cart successfully", "success");
     }
   } catch (err) {

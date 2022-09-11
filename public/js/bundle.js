@@ -22985,6 +22985,7 @@ var addProduct = /*#__PURE__*/function () {
 
             if (res.data.status === "success") {
               document.querySelector(".upload").textContent = "Upload";
+              document.querySelector(".upload").disabled = false;
 
               _toastr.default.success("Added to cart successfully", "success");
             }
@@ -23453,6 +23454,10 @@ if (deleteButtons) deleteButtons.forEach(function (deleteButton) {
   deleteButton.addEventListener("click", function (e) {
     var target = e.target.parentNode.parentNode;
     var deleteId = target.querySelector(".product-id").textContent;
+
+    _toastr.default.info("Deleting Item", "Delete");
+
+    deleteButton.disabled = true;
     (0, _cart.deleteFromCart)(deleteId);
   });
 });
@@ -23463,6 +23468,7 @@ if (addProductButton) addProductButton.addEventListener("submit", function (e) {
   var checkboxes = document.querySelectorAll("#check:checked");
   var imageFiles = document.querySelector("#image").files;
   document.querySelector(".upload").textContent = "Loading..";
+  document.querySelector(".upload").disabled = true;
 
   for (var i in imageFiles) {
     if (i != "length") {
@@ -23490,6 +23496,7 @@ if (addProductButton) addProductButton.addEventListener("submit", function (e) {
 
   if (name.length < 6) {
     document.querySelector(".upload").textContent = "Upload";
+    document.querySelector(".upload").disabled = false;
 
     _toastr.default.error("Atleast 6 characters should be in name", "failed");
 
@@ -23510,6 +23517,7 @@ if (addProductButton) addProductButton.addEventListener("submit", function (e) {
   setTimeout(function () {
     if (images.length == 0) {
       document.querySelector(".upload").textContent = "Upload";
+      document.querySelector(".upload").disabled = false;
 
       _toastr.default.error("Add Atleast one image", "failed");
 

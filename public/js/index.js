@@ -140,6 +140,8 @@ if (deleteButtons)
     deleteButton.addEventListener("click", function (e) {
       const target = e.target.parentNode.parentNode;
       const deleteId = target.querySelector(".product-id").textContent;
+      toastr.info("Deleting Item", "Delete");
+      deleteButton.disabled = true;
       deleteFromCart(deleteId);
     });
   });
@@ -153,6 +155,7 @@ if (addProductButton)
     const imageFiles = document.querySelector("#image").files;
 
     document.querySelector(".upload").textContent = "Loading..";
+    document.querySelector(".upload").disabled = true;
 
     for (const i in imageFiles) {
       if (i != "length") {
@@ -178,6 +181,7 @@ if (addProductButton)
     const name = document.querySelector("#name").value;
     if (name.length < 6) {
       document.querySelector(".upload").textContent = "Upload";
+      document.querySelector(".upload").disabled = false;
       toastr.error("Atleast 6 characters should be in name", "failed");
       return;
     }
@@ -200,6 +204,7 @@ if (addProductButton)
     setTimeout(() => {
       if (images.length == 0) {
         document.querySelector(".upload").textContent = "Upload";
+        document.querySelector(".upload").disabled = false;
         toastr.error("Add Atleast one image", "failed");
         return;
       }
