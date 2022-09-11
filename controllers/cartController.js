@@ -17,7 +17,7 @@ exports.deleteFromCart = catchAsync(async (req, res, next) => {
   const cart = [];
 
   const cartProducts = (
-    await User.findOneAndUpdate({ _id: res.locals.user._id })
+    await User.findByIdAndUpdate({ _id: res.locals.user._id })
   ).cart;
 
   let deleted = 0;
@@ -28,7 +28,7 @@ exports.deleteFromCart = catchAsync(async (req, res, next) => {
     }
     cart.push(cartProducts[i]);
   }
-  await User.findOneAndUpdate(
+  await User.findByIdAndUpdate(
     { _id: res.locals.user._id },
     { $set: { cart: cart } }
   );
